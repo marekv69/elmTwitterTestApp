@@ -1,2 +1,2 @@
-# elmTwitterTestApp
-test
+# elmTwitterTestAp
+git running
