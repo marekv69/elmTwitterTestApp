@@ -1,0 +1,11 @@
+# node modules
+#
+node_modules/
+
+# elm stuff
+#
+elm-stuff/
+
+# distribution
+#
+dist/
