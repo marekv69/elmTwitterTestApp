@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show 50 latest tweets by user name</title>
+  <link rel="stylesheet" href="bootstrap.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="bundle.js"></script>
+  <script>
+  /*Code showing how ports and
+
+    var TOKEN_KEY = 'token';
+
+    var token = localStorage.getItem(TOKEN_KEY);
+    var app = Elm.Main.fullscreen({ token: token });
+    app.ports.saveToken.subscribe(function(token){
+      localStorage.setItem(TOKEN_KEY, token);
+    });
+    app.ports.deleteToken.subscribe(function(){
+      localStorage.removeItem(TOKEN_KEY);
+    });
+    */
+    var node = document.getElementById('root');
+    var app = Elm.Main.embed(node);
+  </script>
+</body>
+
+</html>
