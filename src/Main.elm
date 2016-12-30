@@ -1,6 +1,7 @@
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
+import Dropdown exposing (..)
 
 
 
@@ -9,6 +10,7 @@ import Html.Events exposing (..)
 
 type alias Model =
     {
+      sortByDateDropdown : Dropdown.Dropdown
     }
 
 
@@ -19,6 +21,7 @@ init =
     let
         initModel =
             {
+              sortByDateDropdown = Dropdown.init "" ["2", "3", "4"] "Your age"
             }
 
         cmd =
@@ -32,7 +35,7 @@ init =
 
 
 type Msg
-    = NoOp
+    = SortByDateDropdownMsg Dropdown.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -46,9 +49,12 @@ update msg model =
             in
                 ( { model | leaderBoard = leaderBoardModel }
                 , Cmd.map LeaderBoardMsg cmd
-                )--}
-       NoOp ->
-         (model, Cmd.none)
+
+                 )--}
+      SortByDateDropdownMsg msg ->
+        ( {model | sortByDateDropdown = Dropdown.update msg model.sortByDateDropdown}
+        , Cmd.none
+        )
 
 
 
@@ -63,6 +69,10 @@ view model =
         [
            h2 [] [text "Show 50 latest tweets by user name"]
         ,  searchBar model
+        , div [ class "tweet-list"]
+              [
+                Html.map SortByDateDropdownMsg (Dropdown.renderDropdownHtml model.sortByDateDropdown)
+              ]
         ]
 
 searchBar : Model -> Html Msg
